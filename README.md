@@ -1,6 +1,12 @@
 # [![](_docs/img/banner.png)](https://gopeed.com)
 
-[![Test Status](https://github.com/GopeedLab/gopeed/workflows/test/badge.svg)](https://github.com/GopeedLab/gopeed/actions?query=workflow%3Atest)
+[![CI](https://github.com/realagiorganization/gopeed/actions/workflows/ci.yml/badge.svg)](https://github.com/realagiorganization/gopeed/actions/workflows/ci.yml)
+[![Build](https://github.com/realagiorganization/gopeed/actions/workflows/build.yml/badge.svg)](https://github.com/realagiorganization/gopeed/actions/workflows/build.yml)
+[![Test](https://github.com/realagiorganization/gopeed/actions/workflows/test.yml/badge.svg)](https://github.com/realagiorganization/gopeed/actions/workflows/test.yml)
+[![BDD](https://github.com/realagiorganization/gopeed/actions/workflows/bdd.yml/badge.svg)](https://github.com/realagiorganization/gopeed/actions/workflows/bdd.yml)
+[![Release](https://github.com/realagiorganization/gopeed/actions/workflows/release.yml/badge.svg)](https://github.com/realagiorganization/gopeed/actions/workflows/release.yml)
+[![iOS TestFlight](https://github.com/realagiorganization/gopeed/actions/workflows/ios-testflight.yml/badge.svg)](https://github.com/realagiorganization/gopeed/actions/workflows/ios-testflight.yml)
+[![VHS Demo](https://github.com/realagiorganization/gopeed/actions/workflows/vhs-demo.yml/badge.svg)](https://github.com/realagiorganization/gopeed/actions/workflows/vhs-demo.yml)
 [![Codecov](https://codecov.io/gh/GopeedLab/gopeed/branch/main/graph/badge.svg)](https://codecov.io/gh/GopeedLab/gopeed)
 [![Release](https://img.shields.io/github/release/GopeedLab/gopeed.svg)](https://github.com/GopeedLab/gopeed/releases)
 [![Download](https://img.shields.io/github/downloads/GopeedLab/gopeed/total.svg)](https://github.com/GopeedLab/gopeed/releases)
@@ -192,6 +198,23 @@ If you like this project, please consider [donating](https://docs.gopeed.com/don
 ## 🖼️ Showcase
 
 ![](_docs/img/ui-demo.png)
+
+### 🎬 UI Test Walkthrough
+
+![](docs/ui-test.gif)
+
+### 💻 CLI Demo (VHS)
+
+![](docs/cli-demo.gif)
+
+### 🌐 GitHub Pages Preview
+
+![](_docs/img/github-pages/gh-pages-1.png)
+![](_docs/img/github-pages/gh-pages-2.png)
+![](_docs/img/github-pages/gh-pages-3.png)
+![](_docs/img/github-pages/gh-pages-4.png)
+![](_docs/img/github-pages/gh-pages-5.png)
+![](_docs/img/github-pages/gh-pages-6.png)
 
 ## 👨‍💻 Development
 

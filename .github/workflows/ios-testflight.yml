@@ -1,0 +1,90 @@
+name: iOS TestFlight
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+env:
+  GO_VERSION: "1.24"
+  FLUTTER_VERSION: "3.24.5"
+
+jobs:
+  testflight:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: ${{ env.GO_VERSION }}
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+
+      - name: Run Go tests
+        run: go test ./...
+
+      - name: Install gomobile
+        run: |
+          go install golang.org/x/mobile/cmd/gomobile@latest
+          go get golang.org/x/mobile/bind
+          gomobile init
+
+      - name: Build iOS bindings
+        run: |
+          gomobile bind -tags nosqlite -ldflags="-w -s" -o ui/flutter/ios/Frameworks/Libgopeed.xcframework -target=ios github.com/GopeedLab/gopeed/bind/mobile
+
+      - name: Import signing certificate
+        uses: apple-actions/import-codesign-certs@v3
+        with:
+          p12-file-base64: ${{ secrets.IOS_SIGNING_CERT_P12_BASE64 }}
+          p12-password: ${{ secrets.IOS_SIGNING_CERT_PASSWORD }}
+
+      - name: Download provisioning profiles
+        uses: apple-actions/download-provisioning-profiles@v1
+        with:
+          bundle-id: ${{ secrets.IOS_BUNDLE_ID }}
+          profile-type: IOS_APP_STORE
+          issuer-id: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          api-key-id: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+          api-private-key: ${{ secrets.APP_STORE_CONNECT_KEY }}
+
+      - name: Prepare export options
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import os
+
+          path = Path("ui/flutter/ios/ExportOptions.plist")
+          data = path.read_text()
+          data = data.replace("__TEAM_ID__", os.environ["IOS_TEAM_ID"])
+          path.write_text(data)
+          PY
+        env:
+          IOS_TEAM_ID: ${{ secrets.IOS_TEAM_ID }}
+
+      - name: Build IPA
+        run: |
+          cd ui/flutter
+          flutter build ipa --export-options-plist=ios/ExportOptions.plist
+
+      - name: Install fastlane
+        run: gem install fastlane
+
+      - name: Upload to TestFlight
+        env:
+          APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          APP_STORE_CONNECT_KEY: ${{ secrets.APP_STORE_CONNECT_KEY }}
+        run: |
+          cat > appstore_key.json <<JSON
+          {
+            "key_id": "${APP_STORE_CONNECT_KEY_ID}",
+            "issuer_id": "${APP_STORE_CONNECT_ISSUER_ID}",
+            "key": "${APP_STORE_CONNECT_KEY}"
+          }
+          JSON
+          IPA_PATH=$(ls ui/flutter/build/ios/ipa/*.ipa | head -n 1)
+          fastlane pilot upload --ipa "${IPA_PATH}" --api_key_path appstore_key.json --skip_waiting_for_build_processing true

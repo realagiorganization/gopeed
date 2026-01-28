@@ -1,0 +1,26 @@
+name: VHS Demo
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - "prompt_artifacts/cli-demo.tape"
+      - "cmd/**"
+      - ".github/workflows/vhs-demo.yml"
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.24"
+      - uses: charmbracelet/vhs-action@v2
+        with:
+          path: prompt_artifacts/cli-demo.tape
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vhs-demo
+          path: docs/cli-demo.gif
