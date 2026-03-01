@@ -1,14 +1,14 @@
 Prompt ID: prompts_ios_app_gopeed-p00012-41870e
-Timestamp: 2026-03-01T19:10:52.717099+00:00
+Timestamp: 2026-03-01T19:58:10.054515+00:00
 Source: discord
-Queue: guild-1353735964635435100-run-22550018723::prompt_queue::discord_1353735964635435100_1353735964635435100_1463130841789104395_realagicorp_iosapp_prompts_ios_app_gopeed_1463130841789104395_json
+Queue: guild-1353735964635435100-run-22550927474::prompt_queue::discord_1353735964635435100_1353735964635435100_1463130841789104395_realagicorp_iosapp_prompts_ios_app_gopeed_1463130841789104395_json
 Run: 1/1
 Content:
 Discord channel: prompts_ios_app_gopeed
 Channel ID: 1463130841789104395
 Queue label: prompts_ios_app_gopeed
 Messages aggregated: 6
-Available repository: realagiorganization/gopeed -> /tmp/repositories/realagiorganization--gopeed
+Available repository: realagiorganization/gopeed -> /tmp/repositories/realagiorganization_gopeed
 
 Discord channel: prompts_ios_app_gopeed | ID: 1463130841789104395 | Reaction filter: :white_check_mark:
 
