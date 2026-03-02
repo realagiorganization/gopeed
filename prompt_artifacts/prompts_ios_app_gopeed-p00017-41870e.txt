@@ -1,0 +1,26 @@
+Prompt ID: prompts_ios_app_gopeed-p00017-41870e
+Timestamp: 2026-02-28T15:48:29.164236+00:00
+Source: discord
+Queue: a4f9d6d0f74247e0a95476cff2366424::prompt_queue::discord_1353735964635435100_1353735964635435100_1463130841789104395_realagicorp_iosapp_prompts_ios_app_gopeed_1463130841789104395_json
+Run: 1/1
+Content:
+Discord channel: prompts_ios_app_gopeed
+Channel ID: 1463130841789104395
+Queue label: prompts_ios_app_gopeed
+Messages aggregated: 6
+Available repository: realagiorganization/gopeed -> /tmp/repositories/realagiorganization_gopeed
+
+Discord channel: prompts_ios_app_gopeed | ID: 1463130841789104395 | Reaction filter: :white_check_mark:
+
+Messages with required reaction:
+[1] (2026-01-20T11:19:46.634+00:00 | realagiadmin_29264 | id=1463130884969594921) Work in https://github.com/realagiorganization/gopeed
+[2] (2026-01-20T11:20:24.401+00:00 | realagiadmin_29264 | id=1463131043375878237) Develop GitHub actions that build test and deploy release version of app to TestFlight, add GitHub actions badges
+[3] (2026-01-21T17:55:33.735+00:00 | realagiadmin_29264 | id=1463592875395645595) test/screenshot github pages website
+Attachments: image.png: /out/1353735964635435100/_media/image-23f49.png ; image.png: /out/1353735964635435100/_media/image-8a218.png ; image.png: /out/1353735964635435100/_media/image-0ad64.png ; image.png: /out/1353735964635435100/_media/image-d6874.png ; image.png: /out/1353735964635435100/_media/image-a464e.png ; image.png: /out/1353735964635435100/_media/image-409ac.png
+[4] (2026-01-22T08:26:12.776+00:00 | mermaid10121 | id=1463811981814530152) Add badges for each GitHub action to README and gif of ui testing
+[5] (2026-01-25T20:21:51.765+00:00 | realagiadmin_29264 | id=1465079244584390749) Create DEVPLAN.md outlining steps for developing this project, mention there all external dependencies that leverage parts of functionality needed
+
+Create BDD test suite describing principal use cases
+
+Create GitHub actions launching BDD suite and add its badge to README. If behavior includes either console or UI / Web user interaction, record it with vhs action and post gif into README
+[6] (2026-01-27T21:26:48.057+00:00 | drybox | id=1465820362548842712) always_on_hint
